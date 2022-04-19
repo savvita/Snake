@@ -7,11 +7,16 @@ namespace Snake
     {
         Func<Point, Point> currentMove;
 
+        public Point Head
+        {
+            get { return Points.Last(); }
+        }
+
         public Snake()
         {
             for (int i = 0; i < 2; i++)
             {
-                points.Add(new Point(5 + i, 5));
+                Points.Add(new Point(5 + i, 5));
             }
 
             currentMove = Point.MoveRight;
@@ -19,17 +24,17 @@ namespace Snake
 
         public void Move()
         {
-            points.First().Clear();
-            points.RemoveAt(0);
+            Points.First().Clear();
+            Points.RemoveAt(0);
 
-            points.Add(currentMove(points.Last()));
+            Points.Add(currentMove(Points.Last()));
 
-            points.Last().Draw();
+            Points.Last().Draw();
         }
 
         public void GrowUp()
         {
-            points.Add(new Point(currentMove(points.Last())));
+            Points.Add(new Point(currentMove(Points.Last())));
         }
 
         public void ChangeDirection(ConsoleKeyInfo keyInfo)

@@ -11,14 +11,14 @@
 
             for (int i = 0; i < width; i++)
             {
-                points.Add(new Point(i, 0, '*'));
-                points.Add(new Point(i, height - 1, '*'));
+                Points.Add(new Point(i, 0, '*'));
+                Points.Add(new Point(i, height - 1, '*'));
             }
 
             for (int i = 0; i < height; i++)
             {
-                points.Add(new Point(0, i, '*'));
-                points.Add(new Point(width - 1, i, '*'));
+                Points.Add(new Point(0, i, '*'));
+                Points.Add(new Point(width - 1, i, '*'));
             }
         }
     }

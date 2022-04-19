@@ -2,16 +2,10 @@
 
 namespace Snake
 {
-    internal class Food : Point
+    internal class SmallFood : Food
     {
-        private static int minX;
-        private static int maxX;
-        private static int minY;
-        private static int maxY;
-
-        private static Food food = null;
-
-        private Food(int width, int height) : base(0, 0)
+        protected static SmallFood food = null;
+        protected SmallFood(int width, int height) : base(width, width)
         {
             minX = 1;
             maxX = minX + width - 2;
@@ -20,14 +14,16 @@ namespace Snake
             maxY = minY + height - 2;
         }
 
-        public static Food GetFood(int width, int height)
+        public static SmallFood GetFood(int width, int height)
         {
             if(food == null)
-                food = new Food(width, height);
+                food = new SmallFood(width, height);
 
             Random random = new Random();
+
             food.X = random.Next(minX, maxX);
             food.Y = random.Next(minY, maxY);
+            food.Symbol = (char)1;
 
             return food;
         }
